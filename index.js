@@ -9,18 +9,18 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-app.use(cors({
-  origin: "*",
-}));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
-
-app.use("/api/auth", authRoute); // authentication 
-app.use("/api/comp", compRoute); 
-
+app.use("/api/auth", authRoute); // authentication
+app.use("/api/comp", compRoute);
 app.get("/", (req, res) => {
-  res.json({ message: "Server Running" });
+  res.json({ WelCome: "Greetings to Dont Ask, a platform where you have the freedom to create contests and invite others to participate and contribute" });
 });
 
 // database connection
