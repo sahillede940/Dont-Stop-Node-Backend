@@ -9,7 +9,9 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://web-a-thon-frontend-extended.vercel.app/", "http://localhost:3000/"],
+}));
 app.use(cookieParser());
 app.use(express.json());
 
