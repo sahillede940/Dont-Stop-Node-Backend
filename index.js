@@ -10,24 +10,35 @@ const app = express();
 dotenv.config();
 
 app.use(cors());
-
 app.use(cookieParser());
 app.use(express.json());
+
 app.use("/api/auth", authRoute); // authentication
 app.use("/api/comp", compRoute);
+
 app.get("/", (req, res) => {
-  res.json({ WelCome: "Greetings to Dont Ask, a platform where you have the freedom to create contests and invite others to participate and contribute" });
+  res.json({ message: "Greetings to Dont Ask, a platform where you have the freedom to create contests and invite others to participate and contribute" });
 });
 
-// database connection
+// database connection and server startup
 mongoose
   .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Database connected..."))
-  .catch((er) => console.log("*** Error connecting database ***"));
+  .then(() => {
+    console.log("Database connected...");
+    app.listen(5000, () => {
+      console.log("Server started...");
+    });
+  })
+  .catch((error) => {
+    console.error("Error connecting to database:", error);
+    process.exit(1); // Terminate the application
+  });
 
-app.listen(5000, () => {
-  console.log("Server started...");
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err);
+  res.status(500).json({ error: "Something went wrong" });
 });
