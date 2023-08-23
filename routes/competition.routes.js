@@ -8,24 +8,22 @@ import { getAllCompetitions } from "../controller/Competition/getAllCompetitions
 import { getMyCompetitions } from "../controller/Competition/getMyCompetitions.js";
 import { removeCompetition } from "../controller/Competition/removeCompetiton.js";
 import { showMyRequests } from "../controller/Competition/showMyRequests.js";
+import { removeRequest } from "../controller/Competition/removeRequest.js";
 
 const router = express.Router();
 
 // competition routes visible to user
-router.post("/createCompetition",createCompetition);
-router.get("/getMyCompetitions/:user_id",getMyCompetitions);
-router.delete("/deleteCompetition/:id",deleteCompetition);
-router.put("/applyCompetition",applyCompetition);
-router.put("/acceptCompetition",acceptCompetition);
-router.put("/removeCompetition",removeCompetition);
-router.get("/showMyRequests/:user_id",showMyRequests);
-router.get('/compStatus/:compId', compStatus);
+router.post("/createCompetition", createCompetition);
+router.get("/getMyCompetitions/:user_id", getMyCompetitions);
+router.delete("/deleteCompetition/:id", deleteCompetition);
+router.put("/applyCompetition", applyCompetition);
+router.delete("/removeRequest/:id", removeRequest);
+router.put("/acceptCompetition", acceptCompetition);
+router.put("/removeCompetition", removeCompetition);
+router.get("/showMyRequests/:user_id", showMyRequests);
+router.get("/compStatus/:compId", compStatus);
 
-//On competitions page
-router.get("/getAllCompetitions",getAllCompetitions);
-
-
+// On competitions page
+router.get("/getAllCompetitions", getAllCompetitions);
 
 export default router;
-
-

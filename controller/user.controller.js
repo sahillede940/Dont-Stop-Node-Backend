@@ -42,7 +42,7 @@ export const login = async (req, res) => {
       email: user.email,
       _id: user._id,
     };
-    let token = jwt.sign(payload, APP_SECRET, {
+    let token = jwt.sign(payload, process.env.APP_SECRET, {
       expiresIn: 7 * 24 * 60 * 60, // 7 days
     });
 
@@ -64,7 +64,7 @@ export const signup = async (req, res) => {
     // req body
     // console.log(req.body);
     let { fullName, email, college, about, password } = req.body;
-
+    
     // hashing password using bcrypt
     password = bcrypt.hashSync(password, 10);
 
@@ -80,15 +80,13 @@ export const signup = async (req, res) => {
       about: about,
     });
 
-    // console.log(newUser);
-
     // jwt token for the user
     const payload = {
       email: newUser.email,
       _id: newUser._id,
     };
 
-    let jwtToken = jwt.sign(payload, APP_SECRET, {
+    let jwtToken = jwt.sign(payload, process.env.APP_SECRET, {
       expiresIn: 7 * 24 * 60 * 60, // for 7 days
     });
 

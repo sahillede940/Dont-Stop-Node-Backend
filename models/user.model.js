@@ -10,7 +10,7 @@ const user = new Schema({
     email: {
         type: String,
         required: [true, "email is required"],
-        unique: [true, "You are already registered"],
+        // unique: [true, "You are already registered"],
     },
     password: {
         type: String,
@@ -24,7 +24,6 @@ const user = new Schema({
         type: String,
     },
     compCreated: [{ type: Schema.Types.ObjectId, ref: 'competition' }],
-    // compAccepted: [{ type: mongoose.Schema.Types.Schema.Types.ObjectId, ref: 'competition' }],
     createdAt: {
         type: Date,
         default: new Date(),

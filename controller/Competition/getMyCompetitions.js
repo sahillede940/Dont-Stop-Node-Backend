@@ -6,18 +6,11 @@ export const getMyCompetitions = async (req, res) => {
     try {
         let user_id = req.params['user_id']
         let Competitions= await Competition.find({creator: user_id}).populate('creator').populate('applied_users')
-         //let usersApplied=[]
-        // Competitions[0].applied_users.forEach(async (element) => {
-        //     console.log(element.userApplied.toString());
-        //     let userapp=await User.findOne({_id:element.userApplied.toString()});
-        //     usersApplied.push(userapp.fullName)
-        // });
-       
+
         // response
         res.json({
             success: true,
             Competitions: Competitions,
-            //usersApplied: usersApplied
         });
 
     } catch (err) {

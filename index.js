@@ -5,7 +5,6 @@ import compRoute from "./routes/competition.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import { DATABASE_URL } from "./constants.js";
 
 const app = express();
 dotenv.config();
@@ -23,7 +22,7 @@ app.get("/", (req, res) => {
 
 // database connection
 mongoose
-  .connect(DATABASE_URL, {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

@@ -6,7 +6,6 @@ export const applyCompetition = async (req, res) => {
     let { userApplied, competition, note, fullName } = req.body;
 
     // creating a userSelector entity
-
     const userComp = await UserSelector.create({
       userApplied: userApplied,
       competition: competition,
