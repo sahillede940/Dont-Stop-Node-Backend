@@ -9,11 +9,7 @@ import mongoose from "mongoose";
 const app = express();
 dotenv.config();
 
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors());
 
 app.use(cookieParser());
 app.use(express.json());
