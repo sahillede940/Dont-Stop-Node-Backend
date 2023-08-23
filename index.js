@@ -10,7 +10,9 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-  origin: ["https://web-a-thon-frontend-extended.vercel.app/", "http://localhost:3000/"],
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 200
 }));
 app.use(cookieParser());
 app.use(express.json());
