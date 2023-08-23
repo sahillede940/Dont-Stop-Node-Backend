@@ -12,10 +12,12 @@ dotenv.config();
 app.use(cors({
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
   optionsSuccessStatus: 200
 }));
 app.use(cookieParser());
 app.use(express.json());
+app.options('*', cors());
 
 app.use("/api/auth", authRoute); // authentication
 app.use("/api/comp", compRoute);
